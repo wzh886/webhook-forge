@@ -36,6 +36,65 @@ webhook-forge verify --secret whsec_test --timestamp 1712345678 --payload '{"ok"
 
 ---
 
+## Installation
+```bash
+pip install -e .
+```
+
+Or run directly from source with:
+
+```bash
+PYTHONPATH=src python3 -m webhook_forge.cli ...
+```
+
+## Quickstart
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/wzh886/webhook-forge.git
+cd webhook-forge
+```
+
+### 2. Run locally
+```bash
+PYTHONPATH=src python3 -m webhook_forge.cli sign \
+  --secret whsec_test \
+  --timestamp 1712345678 \
+  --payload '{"ok":true}'
+```
+
+Verify a signature:
+
+```bash
+PYTHONPATH=src python3 -m webhook_forge.cli verify \
+  --secret whsec_test \
+  --timestamp 1712345678 \
+  --payload '{"ok":true}' \
+  --signature 'sha256=your_signature_here'
+```
+
+### 3. Install as a local CLI (optional)
+```bash
+pip install -e .
+webhook-forge sign --secret whsec_test --timestamp 1712345678 --payload '{"ok":true}'
+```
+
+## Sample output
+
+### Sign
+```bash
+$ webhook-forge sign --secret whsec_test --timestamp 1712345678 --payload '{"ok":true}'
+sha256=6d4f...
+```
+
+### Verify
+```bash
+$ webhook-forge verify --secret whsec_test --timestamp 1712345678 --payload '{"ok":true}' --signature 'sha256=6d4f...'
+valid
+```
+
+---
+
 ## Roadmap
 ### v0.1
 - [x] core sign/verify helpers
