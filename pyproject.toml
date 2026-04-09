@@ -1,0 +1,14 @@
+[project]
+name = "webhook-forge"
+version = "0.1.0"
+description = "CLI utilities for signing, verifying, and replaying webhook deliveries"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Zhenhua Wang" }]
+
+[project.scripts]
+webhook-forge = "webhook_forge.cli:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
